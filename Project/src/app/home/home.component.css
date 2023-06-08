@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 1000px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight:1000px;
+    color: #f8f5f5;
+    text-align: center;
+    margin-top: 50px;
+    text-shadow: 5px 5px 5px ;
+    margin-bottom: 20px;
+  }
+  
+  body {
+    
+    background-image: url('https://cdn.create.vista.com/api/media/small/6995028/stock-photo-afraid-young-man');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  header {
+    background-color: #952626;
+    color: #953d3d;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  nav li {
+    margin-left: 20px;
+    color: #952626;
+  }
+  
+  nav a {
+    color: #f4efef;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  .hero-text {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .hero-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ee1919;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .btn:hover {
+    background-color: #ec4141;
+  }
+  
+  .btn:active {
+    background-color: #c51717;
+  }
+
+  footer {
+    background-color: #762d2d;
+    margin: auto;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  
+  
