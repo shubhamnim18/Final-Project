@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "zZa3z1hK0ZUwORe/4YBJfm60nFaFx0eik+DAq6y4uDg=",
+  "Hash": "LijJI38EgRpCm5We3PZmEYzEl03OFBj2FBqoXkUvbk0=",
   "Source": "ProjectWeb",
   "BasePath": "_content/ProjectWeb",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ProjectWeb\\wwwroot",
+      "Source": "ProjectWeb",
+      "ContentRoot": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\",
+      "BasePath": "_content/ProjectWeb",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

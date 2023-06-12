@@ -10,9 +10,11 @@ namespace ProjectWeb.Controllers
 	public class ProductServicesController : ControllerBase
 	{
 		private readonly SubscriptionContext _context;
-		public ProductServicesController(SubscriptionContext context)
+		private readonly IWebHostEnvironment _environment;
+		public ProductServicesController(SubscriptionContext context, IWebHostEnvironment environment)
 		{
 			_context = context;
+			_environment = environment;
 		}
 		[HttpGet]
 		public IActionResult Get()
@@ -51,10 +53,25 @@ namespace ProjectWeb.Controllers
 			}
 		}
 		[HttpPost]
-		public IActionResult Post(ProductService model)
+		public IActionResult Post([FromForm]ProductService model)
 		{
 			try
 			{
+				if (model.file.Length>0)
+				{
+					string path = _environment.WebRootPath + "\\images\\";
+					if (!Directory.Exists(path))
+					{
+						Directory.CreateDirectory(path);
+					}
+					using(FileStream fileStream = System.IO.File.Create(path + model.file.FileName))
+					{
+						model.file.CopyTo(fileStream);
+						fileStream.Flush();
+					}
+				}
+				string path1 = _environment.WebRootPath + "\\images\\" + model.file.FileName;
+				model.Image = path1;
 				_context.ProductServices.Add(model);
 				_context.SaveChanges();
 				return Ok("Data Added Successfully");

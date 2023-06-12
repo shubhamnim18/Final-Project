@@ -58,7 +58,10 @@ public partial class SubscriptionContext : DbContext
             entity.Property(e => e.ServiceName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-        });
+			entity.Property(e => e.Image)
+				.HasMaxLength(100)
+				.IsUnicode(false);
+		});
 
         modelBuilder.Entity<SubscriptionTier>(entity =>
         {
