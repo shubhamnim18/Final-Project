@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ReportComponent } from './admin/report/report.component';
 import { ServicesComponent } from './admin/services/services.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SubscriptionComponent } from './admin/subscription/subscription.component';
+import { AddServiceComponent } from './admin/add-service/add-service.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,12 +32,14 @@ import { SubscriptionComponent } from './admin/subscription/subscription.compone
     ServicesComponent,
     UsersComponent,
     SubscriptionComponent,
+    AddServiceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

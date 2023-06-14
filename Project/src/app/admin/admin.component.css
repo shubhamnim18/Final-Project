@@ -13,7 +13,7 @@
 .main-container {
     display: flex;
     .side-nav {
-      width: 350px;
+      width: 300px;
       min-width: 230px;
       min-height: calc(100vh - 70px);
       background-color: #113c60;

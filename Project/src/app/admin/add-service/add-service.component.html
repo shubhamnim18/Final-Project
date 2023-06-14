@@ -1,0 +1,24 @@
+<div class="container">
+    <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+        <div>
+            <h2 class="display-4 text-center">Enter Service Details</h2>
+        </div>
+        <div class="form-group">
+            <label>SERVICE NAME</label>  
+            <input class="form-control form-control-lg" placeholder="Full Name"
+            name="serviceName" #serviceName="ngModel" [(ngModel)]="name" required>    
+        </div>
+        <br>
+        <div class="form-group">
+            <label>SERVICE LOGO</label>  
+            <input type="file" class="form-control form-control-lg" (change)="onselectFile($event)" required>    
+        </div>
+        <br>
+
+        <br> 
+        <div class="form-group">
+            <button type="submit" class="btn btn-info btn-lg btn-block" [disabled]="form.invalid" >Submit</button>
+        </div>
+    </form>
+</div>
+

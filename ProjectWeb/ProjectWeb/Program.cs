@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using ProjectWeb.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +16,18 @@ builder.Services.AddDbContext<SubscriptionContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("mycon")));
 var app = builder.Build();
 
+//CORS
+builder.Services.AddCors();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
+	app.UseCors(options =>
+	options.WithOrigins("http://localhost:4200")
+	.AllowAnyMethod()
+	.AllowAnyHeader());
 }
 
 app.UseHttpsRedirection();

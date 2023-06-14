@@ -15,7 +15,6 @@ namespace ProjectWeb.Controllers
 		{
 			_context = context;
 		}
-
 		[HttpGet]
 		public IActionResult Get()
 		{
@@ -122,5 +121,25 @@ namespace ProjectWeb.Controllers
 				return BadRequest(e.Message);
 			}
 		}
+		[Route("Count")]
+		[HttpGet]
+		public IActionResult Count()
+		{
+			try
+			{
+				var users = _context.Users.ToList();
+				if (users.Count == 0)
+				{
+					return NotFound("Users List is Empty");
+				}
+				return Ok(users.Count());
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+		}
+
 	}
 }

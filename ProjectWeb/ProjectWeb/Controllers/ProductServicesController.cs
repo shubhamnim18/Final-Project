@@ -57,20 +57,20 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				if (model.file.Length>0)
+				if (model.File.Length>0)
 				{
-					string path = _environment.WebRootPath + "\\images\\";
+					string path = @"F:\Final-Project\Project\src\assets\images\";
 					if (!Directory.Exists(path))
 					{
 						Directory.CreateDirectory(path);
 					}
-					using(FileStream fileStream = System.IO.File.Create(path + model.file.FileName))
+					using(FileStream fileStream = System.IO.File.Create(path + model.File.FileName))
 					{
-						model.file.CopyTo(fileStream);
+						model.File.CopyTo(fileStream);
 						fileStream.Flush();
 					}
 				}
-				string path1 = _environment.WebRootPath + "\\images\\" + model.file.FileName;
+				string path1 ="./assets/images/"+model.File.FileName;
 				model.Image = path1;
 				_context.ProductServices.Add(model);
 				_context.SaveChanges();
@@ -127,6 +127,25 @@ namespace ProjectWeb.Controllers
 				_context.ProductServices.Remove(service);
 				_context.SaveChanges();
 				return Ok("Service Data deleted successfully");
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+		}
+		[Route("Count")]
+		[HttpGet]
+		public IActionResult Count()
+		{
+			try
+			{
+				var services = _context.ProductServices.ToList();
+				if (services.Count == 0)
+				{
+					return NotFound("Services List is Empty");
+				}
+				return Ok(services.Count());
 			}
 			catch (Exception e)
 			{

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LijJI38EgRpCm5We3PZmEYzEl03OFBj2FBqoXkUvbk0=",
+  "Hash": "b8Fuz9mx1p6jQNRXr04BBU37y8e50Qz7lr+UHTtpJWA=",
   "Source": "ProjectWeb",
   "BasePath": "_content/ProjectWeb",
   "Mode": "Default",
@@ -15,5 +15,74 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\images\\1602-lcd-with-i2c-interface-india-800x800.jpg",
+      "SourceId": "ProjectWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\",
+      "BasePath": "_content/ProjectWeb",
+      "RelativePath": "images/1602-lcd-with-i2c-interface-india-800x800.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\1602-lcd-with-i2c-interface-india-800x800.jpg"
+    },
+    {
+      "Identity": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\images\\download.png",
+      "SourceId": "ProjectWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\",
+      "BasePath": "_content/ProjectWeb",
+      "RelativePath": "images/download.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\download.png"
+    },
+    {
+      "Identity": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\images\\IoT-Sound-Meter-Circuit-Diagram.png",
+      "SourceId": "ProjectWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\",
+      "BasePath": "_content/ProjectWeb",
+      "RelativePath": "images/IoT-Sound-Meter-Circuit-Diagram.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\IoT-Sound-Meter-Circuit-Diagram.png"
+    },
+    {
+      "Identity": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\images\\sound-detection-sensor-module-arduino-compatible-400x400.jpg",
+      "SourceId": "ProjectWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\wwwroot\\",
+      "BasePath": "_content/ProjectWeb",
+      "RelativePath": "images/sound-detection-sensor-module-arduino-compatible-400x400.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\sound-detection-sensor-module-arduino-compatible-400x400.jpg"
+    }
+  ]
 }

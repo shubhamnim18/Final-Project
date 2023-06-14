@@ -119,5 +119,24 @@ namespace ProjectWeb.Controllers
 				return BadRequest(e.Message);
 			}
 		}
+		[Route("Count")]
+		[HttpGet]
+		public IActionResult Count()
+		{
+			try
+			{
+				var subscribes = _context.UserSubscriptions.ToList();
+				if (subscribes.Count == 0)
+				{
+					return NotFound("UserSubscriptions List is Empty");
+				}
+				return Ok(subscribes.Count());
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+		}
 	}
 }

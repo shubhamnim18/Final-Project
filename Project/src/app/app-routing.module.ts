@@ -9,6 +9,7 @@ import { ServicesComponent } from './admin/services/services.component';
 import { ReportComponent } from './admin/report/report.component';
 import { ProfileComponent } from './admin/profile/profile.component';
 import { SubscriptionComponent } from './admin/subscription/subscription.component';
+import { AddServiceComponent } from './admin/add-service/add-service.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'report', component: ReportComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'subscription', component: SubscriptionComponent },
+      { path:'add-ser', component:AddServiceComponent },
     ]
   }
 
