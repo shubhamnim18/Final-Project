@@ -10,6 +10,7 @@ import { ReportComponent } from './admin/report/report.component';
 import { ProfileComponent } from './admin/profile/profile.component';
 import { SubscriptionComponent } from './admin/subscription/subscription.component';
 import { AddServiceComponent } from './admin/add-service/add-service.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   {
-    path: 'admin', component: AdminComponent,
+    path: 'admin', component: AdminComponent,canActivate:[AuthGuard],
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'user', component: UsersComponent },
@@ -28,7 +29,6 @@ const routes: Routes = [
       { path:'add-ser', component:AddServiceComponent },
     ]
   }
-
 
 ];
 

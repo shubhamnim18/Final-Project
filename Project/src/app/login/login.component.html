@@ -124,10 +124,10 @@
   <div class="container">
     <h1>Subscription Portal</h1>
     <form>
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" [(ngModel)]="user">
+      <label for="username">Email</label>
+      <input type="text" id="email" name="email" [(ngModel)]="user.email">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" [(ngModel)]="pass">
+      <input type="password" id="password" name="password" [(ngModel)]="user.password">
       <button (click)="login()">Sign Up</button>
     </form>
   <div class="error" id="error-message"></div>
