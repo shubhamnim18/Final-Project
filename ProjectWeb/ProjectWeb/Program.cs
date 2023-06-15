@@ -1,30 +1,7 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using ProjectWeb.Context;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-//JWT
-
-builder.Services.AddAuthentication(x =>
-{
-	x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-	x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-	x.RequireHttpsMetadata = false;
-	x.SaveToken = true;
-	x.TokenValidationParameters = new TokenValidationParameters
-	{
-		ValidateIssuerSigningKey = true,
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecrete.....")),
-		ValidateAudience = false,
-		ValidateIssuer = false
-	};
-});
 
 // Add services to the container.
 
@@ -36,12 +13,11 @@ builder.Services.AddSwaggerGen();
 //DI
 builder.Services.AddDbContext<SubscriptionContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("mycon")));
-var app = builder.Build();
 
 //CORS
 builder.Services.AddCors();
 
-
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -55,8 +31,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
 
 app.UseAuthorization();
 

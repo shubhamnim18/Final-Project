@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectWeb.Models;
 using ProjectWeb.Context;
+using ProjectWeb.Models;
 
 namespace ProjectWeb.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class ProductServicesController : ControllerBase
+	public class SubProductServicesController : ControllerBase
 	{
 		private readonly SubscriptionContext _context;
-		public ProductServicesController(SubscriptionContext context)
+		public SubProductServicesController(SubscriptionContext context)
 		{
 			_context = context;
 		}
@@ -19,12 +19,12 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var services = _context.ProductServices.ToList();
-				if (services.Count == 0)
+				var subServices = _context.SubProductServices.ToList();
+				if (subServices.Count == 0)
 				{
 					return NotFound("Services List is Empty");
 				}
-				return Ok(services);
+				return Ok(subServices);
 			}
 			catch (Exception e)
 			{
@@ -37,12 +37,12 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var service = _context.ProductServices.Find(id);
-				if (service == null)
+				var subService = _context.SubProductServices.Find(id);
+				if (subService == null)
 				{
 					return NotFound("Data Not Found");
 				}
-				return Ok(service);
+				return Ok(subService);
 			}
 			catch (Exception e)
 			{
@@ -51,13 +51,13 @@ namespace ProjectWeb.Controllers
 			}
 		}
 		[HttpPost]
-		public IActionResult Post([FromForm] ProductService model)
+		public IActionResult Post([FromForm] SubProductService model)
 		{
 			try
 			{
 				if (model.File.Length > 0)
 				{
-					string path = @"F:\Final-Project\Project\src\assets\images\services\";
+					string path = @"F:\Final-Project\Project\src\assets\images\subservice\";
 					if (!Directory.Exists(path))
 					{
 						Directory.CreateDirectory(path);
@@ -68,9 +68,9 @@ namespace ProjectWeb.Controllers
 						fileStream.Flush();
 					}
 				}
-				string path1 = "./assets/images/service/" + model.File.FileName;
+				string path1 = "./assets/images/subservice/" + model.File.FileName;
 				model.Image = path1;
-				_context.ProductServices.Add(model);
+				_context.SubProductServices.Add(model);
 				_context.SaveChanges();
 				return Ok("Data Added Successfully");
 			}
@@ -81,9 +81,9 @@ namespace ProjectWeb.Controllers
 			}
 		}
 		[HttpPut]
-		public IActionResult Put(ProductService model)
+		public IActionResult Put(SubProductService model)
 		{
-			if (model == null || model.ServiceId == 0)
+			if (model == null || model.SubServiceId == 0)
 			{
 				if (model == null)
 				{
@@ -96,12 +96,12 @@ namespace ProjectWeb.Controllers
 			}
 			try
 			{
-				var service = _context.ProductServices.Find(model.ServiceId);
+				var service = _context.SubProductServices.Find(model.SubServiceId);
 				if (service == null)
 				{
 					return NotFound("Data Not Found");
 				}
-				service.ServiceName = model.ServiceName;
+				service.SubServiceName = model.SubServiceName;
 				service.Image = model.Image;
 				_context.SaveChanges();
 				return Ok("Service Data Updated");
@@ -117,12 +117,12 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var service = _context.ProductServices.Find(id);
+				var service = _context.SubProductServices.Find(id);
 				if (service == null)
 				{
 					return NotFound("User not found");
 				}
-				_context.ProductServices.Remove(service);
+				_context.SubProductServices.Remove(service);
 				_context.SaveChanges();
 				return Ok("Service Data deleted successfully");
 			}
@@ -138,7 +138,7 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var services = _context.ProductServices.ToList();
+				var services = _context.SubProductServices.ToList();
 				if (services.Count == 0)
 				{
 					return NotFound("Services List is Empty");

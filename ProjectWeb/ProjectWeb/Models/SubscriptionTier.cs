@@ -13,9 +13,9 @@ public partial class SubscriptionTier
 
     public int? Duration { get; set; }
 
-    public int? ServiceId { get; set; }
+    public int? SubServiceId { get; set; }
 
-    public virtual ProductService? Service { get; set; }
+    public virtual SubProductService? SubService { get; set; }
 
     public virtual ICollection<UserSubscription> UserSubscriptions { get; set; } = new List<UserSubscription>();
 }

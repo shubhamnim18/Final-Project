@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectWeb.Context;
 using ProjectWeb.Models;
+using ProjectWeb.Context;
 
 namespace ProjectWeb.Controllers
 {
@@ -15,11 +15,11 @@ namespace ProjectWeb.Controllers
 			_context = context;
 		}
 		[HttpGet]
-		public IActionResult Get(string uname,string pass)
+		public IActionResult Get()
 		{
 			try
 			{
-				var admin = _context.Admins.Where(a=>a.UserName==uname && a.Password==pass);
+				var admin = _context.Admins.ToList();
 				if (admin == null)
 				{
 					return NotFound("Data Not Found");
@@ -100,6 +100,21 @@ namespace ProjectWeb.Controllers
 
 				return BadRequest(e.Message);
 			}
+		}
+		[HttpPost("authenticate")]
+		public IActionResult Authenticate(Admin model)
+		{
+			if (model == null)
+				return BadRequest();
+			var user = _context.Admins.FirstOrDefault(a => a.UserName == model.UserName && a.Password == model.Password);
+
+			if (user == null)
+				return NotFound(new { Message = "User Not Found!" });
+
+			return Ok(new
+			{
+				Message = "Login Successful"
+			});
 		}
 	}
 }

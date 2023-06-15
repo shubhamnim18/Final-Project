@@ -1,12 +1,7 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using ProjectWeb.Context;
 using ProjectWeb.Models;
+using ProjectWeb.Context;
 
 namespace ProjectWeb.Controllers
 {
@@ -150,38 +145,15 @@ namespace ProjectWeb.Controllers
 		{
 			if (model == null)
 				return BadRequest();
-			var user = _context.Users.FirstOrDefault(a => a.Email == model.Email && a.Password==model.Password);
+			var user = _context.Users.FirstOrDefault(a => a.Email == model.Email && a.Password == model.Password);
 
 			if (user == null)
-				return NotFound(new {Message="User Not Found!"});
+				return NotFound(new { Message = "User Not Found!" });
 
-			model.Token = CreateJwt(user);
 			return Ok(new
 			{
-				Token = model.Token,
 				Message = "Login Successful"
-			}) ;
-		}
-
-		private string CreateJwt(User model)
-		{
-			var jwtTokenHandler = new JwtSecurityTokenHandler();
-			var key = Encoding.ASCII.GetBytes("veryverysecrete.....");
-			var identity = new ClaimsIdentity(new Claim[]
-			{
-				new Claim(ClaimTypes.Name,$"{model.FirstName} {model.LastName}")
 			});
-			var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
-
-			var tokenDescriptor = new SecurityTokenDescriptor
-			{
-				Subject = identity,
-				Expires = DateTime.Now.AddDays(1),
-				SigningCredentials = credentials
-			};
-			var token = jwtTokenHandler.CreateToken(tokenDescriptor);
-			return jwtTokenHandler.WriteToken(token);
 		}
-
 	}
 }

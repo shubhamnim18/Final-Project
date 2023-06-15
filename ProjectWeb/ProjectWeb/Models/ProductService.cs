@@ -11,8 +11,9 @@ public partial class ProductService
     public string? ServiceName { get; set; }
 
     public string? Image { get; set; }
-    [NotMapped]
-    public IFormFile File { get; set; }
 
-    public virtual ICollection<SubscriptionTier> SubscriptionTiers { get; set; } = new List<SubscriptionTier>();
+	[NotMapped]
+	public IFormFile File { get; set; }
+
+	public virtual ICollection<SubProductService> SubProductServices { get; set; } = new List<SubProductService>();
 }

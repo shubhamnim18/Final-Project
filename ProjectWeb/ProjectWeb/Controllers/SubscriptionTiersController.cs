@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectWeb.Context;
 using ProjectWeb.Models;
+using ProjectWeb.Context;
 
 namespace ProjectWeb.Controllers
 {
@@ -87,9 +87,9 @@ namespace ProjectWeb.Controllers
 					return NotFound("Data Not Found");
 				}
 				tier.TierName = model.TierName;
-				tier.Price=model.Price;
-				tier.Duration=model.Duration;
-				tier.ServiceId=model.ServiceId;
+				tier.Price = model.Price;
+				tier.Duration = model.Duration;
+				tier.SubServiceId = model.SubServiceId;
 				_context.SaveChanges();
 				return Ok("SubscriptionTier Data Updated");
 			}

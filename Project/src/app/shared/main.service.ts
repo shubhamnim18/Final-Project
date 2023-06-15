@@ -33,4 +33,7 @@ export class MainService {
   isLoggedIn():boolean{
     return !!localStorage.getItem('token');
   }
+  signout(){
+    localStorage.clear();
+  }
 }

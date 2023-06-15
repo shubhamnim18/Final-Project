@@ -13,7 +13,7 @@ public partial class UserSubscription
 
     public DateTime? SubscriptionDate { get; set; }
 
-    public DateTime? SubscriptionDateEndDate { get; set; }
+    public DateTime? SubscriptionEndDate { get; set; }
 
     public virtual SubscriptionTier? SubscriptionTier { get; set; }
 

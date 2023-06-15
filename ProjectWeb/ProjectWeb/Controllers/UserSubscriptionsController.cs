@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectWeb.Context;
 using ProjectWeb.Models;
+using ProjectWeb.Context;
 
 namespace ProjectWeb.Controllers
 {
@@ -89,7 +89,7 @@ namespace ProjectWeb.Controllers
 				subscribe.UserId = model.UserId;
 				subscribe.SubscriptionTierId = model.SubscriptionTierId;
 				subscribe.SubscriptionDate = model.SubscriptionDate;
-				subscribe.SubscriptionDateEndDate = model.SubscriptionDateEndDate;
+				subscribe.SubscriptionEndDate = model.SubscriptionEndDate;
 				_context.SaveChanges();
 				return Ok("UserSubscriptions Data Updated");
 			}
