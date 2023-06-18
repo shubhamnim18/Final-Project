@@ -18,6 +18,16 @@ import { ServicesComponent } from './admin/services/services.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SubscriptionComponent } from './admin/subscription/subscription.component';
 import { AddServiceComponent } from './admin/add-service/add-service.component';
+import { AddSubSerComponent } from './admin/add-sub-ser/add-sub-ser.component';
+import { AddSubscriptiontierComponent } from './admin/add-subscriptiontier/add-subscriptiontier.component';
+import { EditSubscritpiontierComponent } from './admin/edit-subscritpiontier/edit-subscritpiontier.component';
+import { SubServiesComponent } from './admin/sub-servies/sub-servies.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { WebPageComponent } from './web-page/web-page.component';
+import { BuyPlanComponent } from './buy-plan/buy-plan.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +43,16 @@ import { AddServiceComponent } from './admin/add-service/add-service.component';
     UsersComponent,
     SubscriptionComponent,
     AddServiceComponent,
+    AddSubSerComponent,
+    AddSubscriptiontierComponent,
+    EditSubscritpiontierComponent,
+    SubServiesComponent,
+    SignUpComponent,
+    WebPageComponent,
+    BuyPlanComponent,
+    PaymentComponent,
+    SubCategoryComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

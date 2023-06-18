@@ -13,8 +13,6 @@ public partial class SubProductService
     public string? Image { get; set; }
 
     public int? ServiceId { get; set; }
-    [NotMapped]
-    public IFormFile File { get; set; }
 
     public virtual ProductService? Service { get; set; }
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeb.Models;
 using ProjectWeb.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectWeb.Controllers
 {
@@ -58,7 +59,7 @@ namespace ProjectWeb.Controllers
 			{
 				_context.Users.Add(model);
 				_context.SaveChanges();
-				return Ok("Data Added Successfully");
+				return Ok(new { Message="Data Added Successfully" });
 			}
 			catch (Exception e)
 			{
@@ -106,14 +107,9 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var user = _context.Users.Find(id);
-				if (user == null)
-				{
-					return NotFound("User not found");
-				}
-				_context.Users.Remove(user);
+				var data = _context.Users.FromSqlRaw("exec DELETEUSER @input={0}", id).ToList();
 				_context.SaveChanges();
-				return Ok("User Data deleted successfully");
+				return Ok(new { Message = "User Data deleted successfully" });
 			}
 			catch (Exception e)
 			{
@@ -150,10 +146,7 @@ namespace ProjectWeb.Controllers
 			if (user == null)
 				return NotFound(new { Message = "User Not Found!" });
 
-			return Ok(new
-			{
-				Message = "Login Successful"
-			});
+			return Ok(user);
 		}
 	}
 }

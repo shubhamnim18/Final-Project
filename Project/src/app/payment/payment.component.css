@@ -1,0 +1,195 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+
+
+
+    padding: 20px;
+
+}
+
+
+
+
+form {
+
+    max-width: 400px;
+
+
+
+
+    margin: 0 auto;
+
+
+
+
+    padding: 20px;
+
+
+
+
+    background-color: #f2f2f2;
+
+
+
+
+    border-radius: 5px;
+
+
+
+
+    /* Increase the height of the form */
+
+
+
+
+    height: 500px;
+
+
+
+
+    /* Add scroll if needed */
+
+
+
+
+    overflow-y: auto;
+
+}
+
+
+
+
+h2 {
+
+    text-align: center;
+
+}
+
+
+
+
+label {
+
+    font-weight: bold;
+
+}
+
+
+
+
+input[type="text"],
+
+input[type="email"],
+
+input[type="tel"],
+
+input[type="month"] {
+
+    width: 100%;
+
+
+
+
+    padding: 10px;
+
+
+
+
+    margin-bottom: 10px;
+
+
+
+
+    border: 1px solid #ccc;
+
+
+
+
+    border-radius: 4px;
+
+}
+
+
+
+
+input[type="submit"] {
+
+    background-color: #4caf50;
+
+
+
+
+    color: #fff;
+
+
+
+
+    padding: 10px 20px;
+
+
+
+
+    border: none;
+
+
+
+
+    border-radius: 4px;
+
+
+
+
+    cursor: pointer;
+
+
+
+
+    /* Add some extra styles */
+
+
+
+
+    display: block;
+
+
+
+
+    margin: 20px auto;
+
+
+
+
+    font-size: 16px;
+
+
+
+
+    font-weight: bold;
+
+
+
+
+    text-transform: uppercase;
+
+
+
+
+    letter-spacing: 1px;
+
+
+
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+
+input[type="submit"]:hover {
+
+    background-color: #45a049;
+
+}

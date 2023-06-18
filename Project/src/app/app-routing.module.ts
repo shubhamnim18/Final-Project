@@ -11,22 +11,42 @@ import { ProfileComponent } from './admin/profile/profile.component';
 import { SubscriptionComponent } from './admin/subscription/subscription.component';
 import { AddServiceComponent } from './admin/add-service/add-service.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AddSubSerComponent } from './admin/add-sub-ser/add-sub-ser.component';
+import { AddSubscriptiontierComponent } from './admin/add-subscriptiontier/add-subscriptiontier.component';
+import { EditSubscritpiontierComponent } from './admin/edit-subscritpiontier/edit-subscritpiontier.component';
+import { SubServiesComponent } from './admin/sub-servies/sub-servies.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { WebPageComponent } from './web-page/web-page.component';
+import { BuyPlanComponent } from './buy-plan/buy-plan.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'web-page', component: WebPageComponent },
+  { path: 'buy-plan', component: BuyPlanComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'sub-category', component: SubCategoryComponent },
+  { path: 'user-profile', component: UserProfileComponent },
   {
-    path: 'admin', component: AdminComponent,canActivate:[AuthGuard],
+    path: 'admin', component: AdminComponent,
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'user', component: UsersComponent },
       { path: 'service', component: ServicesComponent },
+      { path: 'sub-service', component: SubServiesComponent },
       { path: 'report', component: ReportComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'subscription', component: SubscriptionComponent },
       { path:'add-ser', component:AddServiceComponent },
+      {path:'add-sub-ser',component:AddSubSerComponent},
+      {path:'add-subscription',component:AddSubscriptiontierComponent},
+      {path:'edit-tier',component:EditSubscritpiontierComponent}
     ]
   }
 

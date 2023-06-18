@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { user } from '../shared/user';
 import { MainService } from '../shared/main.service';
+import { user1 } from '../shared/user1';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,26 @@ import { MainService } from '../shared/main.service';
 })
 
 export class LoginComponent implements OnInit {
-  constructor(private route:Router,private service:MainService){}
-  ngOnInit(): void {
-  }
   user:user=new user();
-  login(){
+  errorMessage: string = '';
+
+  constructor(private router: Router,private service:MainService) {}
+
+  ngOnInit(): void {}
+
+  log(){
     this.service.authenticate(this.user).subscribe({
-      next:(res:any)=>{ 
-        console.log(res.token);
-        this.service.storeToken(res.token);
-        this.route.navigate(['admin']);
-      },
-      error:err=>{
-        alert("Invalid credentials");
+      next:(res)=>{
+        this.service.userData=res;
+        console.log(this.service.userData);
+        this.router.navigate(['web-page']);
+      },error:err=>{
+        alert("Invalid Credentials");
+        this.user.email='';
+        this.user.password='';
       }
-  });
-  }
+    })
+    }
+    
+  
 }

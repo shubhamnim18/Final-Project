@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj": {}
+    "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj": {}
   },
   "projects": {
-    "F:\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj": {
+    "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj",
+        "projectUniqueName": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj",
         "projectName": "ProjectWeb",
-        "projectPath": "F:\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj",
+        "projectPath": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\ProjectWeb.csproj",
         "packagesPath": "C:\\Users\\Shubham\\.nuget\\packages\\",
-        "outputPath": "F:\\ProjectWeb\\ProjectWeb\\obj\\",
+        "outputPath": "F:\\Final-Project\\ProjectWeb\\ProjectWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Shubham\\AppData\\Roaming\\NuGet\\NuGet.Config",

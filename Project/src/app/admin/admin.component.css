@@ -13,7 +13,7 @@
 .main-container {
     display: flex;
     .side-nav {
-      width: 300px;
+      width: 350px;
       min-width: 230px;
       min-height: calc(100vh - 70px);
       background-color: #113c60;
@@ -25,6 +25,6 @@
       }
     }
     .main {
-      padding: 30px;
+      padding: 15px;
     }
   }

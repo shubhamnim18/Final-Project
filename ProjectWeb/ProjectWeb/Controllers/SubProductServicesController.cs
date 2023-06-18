@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjectWeb.Context;
 using ProjectWeb.Models;
 
@@ -51,28 +52,16 @@ namespace ProjectWeb.Controllers
 			}
 		}
 		[HttpPost]
-		public IActionResult Post([FromForm] SubProductService model)
+		public IActionResult Post(SubProductService model)
 		{
 			try
 			{
-				if (model.File.Length > 0)
-				{
-					string path = @"F:\Final-Project\Project\src\assets\images\subservice\";
-					if (!Directory.Exists(path))
-					{
-						Directory.CreateDirectory(path);
-					}
-					using (FileStream fileStream = System.IO.File.Create(path + model.File.FileName))
-					{
-						model.File.CopyTo(fileStream);
-						fileStream.Flush();
-					}
-				}
-				string path1 = "./assets/images/subservice/" + model.File.FileName;
-				model.Image = path1;
 				_context.SubProductServices.Add(model);
 				_context.SaveChanges();
-				return Ok("Data Added Successfully");
+				return Ok(new
+				{
+					Message="Data added successfully"
+				});
 			}
 			catch (Exception e)
 			{
@@ -117,14 +106,9 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var service = _context.SubProductServices.Find(id);
-				if (service == null)
-				{
-					return NotFound("User not found");
-				}
-				_context.SubProductServices.Remove(service);
+				var data = _context.SubProductServices.FromSqlRaw("exec DELETESUBSERVICE @input={0}", id).ToList();
 				_context.SaveChanges();
-				return Ok("Service Data deleted successfully");
+				return Ok(new { Message = "Service Data deleted successfully" });
 			}
 			catch (Exception e)
 			{
@@ -150,6 +134,84 @@ namespace ProjectWeb.Controllers
 
 				return BadRequest(e.Message);
 			}
+		}
+		[HttpPost("AddImg")]
+		public IActionResult AddImg(IFormFile file)
+		{
+			try
+			{
+				if (file.Length > 0)
+				{
+					string path = @"F:\Final-Project\Project\src\assets\images\";
+					if (!Directory.Exists(path))
+					{
+						Directory.CreateDirectory(path);
+					}
+					using (FileStream fileStream = System.IO.File.Create(path + file.FileName))
+					{
+						file.CopyTo(fileStream);
+						fileStream.Flush();
+					}
+				}
+				string path1 = "./assets/images/" + file.FileName;
+				return Ok(new
+				{
+					path = path1
+				}) ;
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+
+		}
+		[HttpGet("SubServDet")]
+		public IActionResult SubServDet()
+		{
+			try
+			{
+				var result = from ps in _context.ProductServices
+							 join sps in _context.SubProductServices on ps.ServiceId equals sps.ServiceId
+							 select new
+							 {
+								 sps.SubServiceId,
+								 ps.ServiceName,
+								 sps.SubServiceName,
+								 sps.Image
+							 };
+				if (result == null)
+				{
+					return NotFound(new { Message = "UserSubscriptions List is Empty" });
+				}
+				return Ok(result);
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+
+		}
+		[HttpGet("ById")]
+		public IActionResult GetById(int id)
+		{
+			try
+			{
+				var subService =  _context.SubProductServices.Where(sps => sps.ServiceId == id).ToList();
+
+				if (subService == null)
+				{
+					return NotFound(new { Message = "Data Not Found" });
+				}
+				return Ok(subService);
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e);
+			}
+
 		}
 	}
 }

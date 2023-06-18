@@ -15,7 +15,7 @@ export class AddServiceComponent implements OnInit{
   ngOnInit(): void {
       
   }
-  constructor(public service:MainService){}
+  constructor(public service:MainService,private route:Router){}
   onselectFile(e:any){
     this.selectedFile=e.target.files[0];
   }
@@ -25,10 +25,11 @@ export class AddServiceComponent implements OnInit{
     formData.append('file',this.selectedFile);
     this.service.addService(formData).subscribe(
       res=>{ 
+        alert("Service Details added successfully");
+        this.route.navigate(['/admin/service']);
       }
     );
-    alert("Service Details added successfully");
-    window.location.reload();
+   
   }
   
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeb.Models;
 using ProjectWeb.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectWeb.Controllers
 {
@@ -57,7 +58,7 @@ namespace ProjectWeb.Controllers
 			{
 				if (model.File.Length > 0)
 				{
-					string path = @"F:\Final-Project\Project\src\assets\images\services\";
+					string path = @"F:\Final-Project\Project\src\assets\images\";
 					if (!Directory.Exists(path))
 					{
 						Directory.CreateDirectory(path);
@@ -68,11 +69,11 @@ namespace ProjectWeb.Controllers
 						fileStream.Flush();
 					}
 				}
-				string path1 = "./assets/images/service/" + model.File.FileName;
+				string path1 = "./assets/images/" + model.File.FileName;
 				model.Image = path1;
 				_context.ProductServices.Add(model);
 				_context.SaveChanges();
-				return Ok("Data Added Successfully");
+				return Ok(new { Message = "Data Added Successfully" });
 			}
 			catch (Exception e)
 			{
@@ -117,14 +118,11 @@ namespace ProjectWeb.Controllers
 		{
 			try
 			{
-				var service = _context.ProductServices.Find(id);
-				if (service == null)
-				{
-					return NotFound("User not found");
-				}
-				_context.ProductServices.Remove(service);
+				var data = _context.ProductServices.FromSqlRaw("exec DELETESERVICE @input={0}", id).ToList();
+
+
 				_context.SaveChanges();
-				return Ok("Service Data deleted successfully");
+				return Ok(new { Message = "Service Data deleted successfully" });
 			}
 			catch (Exception e)
 			{
