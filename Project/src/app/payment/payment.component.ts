@@ -19,7 +19,6 @@ export class PaymentComponent {
   }
   OnSubmit(){
     this.service.payment().subscribe(res=>{
-      alert("Payment Done");
       this.router.navigate(['/web-page']);
     })
   }

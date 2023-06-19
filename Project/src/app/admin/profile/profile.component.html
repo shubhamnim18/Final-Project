@@ -1,8 +1,46 @@
-<div class="card">
-    <img src="./assets/Shubham.jpg" alt="John" style="width:60%;height: 80%; margin-left: 68px;">
-    <h2>Shubham Nimbalakar</h2>
-    <p class="title">Oneflix</p>
-    <p>Admin</p>
-    <h4>8088741901</h4>
-    <p><button>shubhamnimbalak9618@gmail.com</button></p>
+<div class="container">
+  <form novalidate #form="ngForm" (submit)="onSubmit()">
+    <fieldset>
+    <div>
+      <h3 class="text-center">ADMIN PROFILE</h3>
+    </div>
+    <br>
+    <div class="profile-pic">
+      <img src="./assets/Admin.png" alt="Profile Picture">
   </div>
+  <br>
+    <div class="form-group">
+      <label>ADMIN FIRST NAME</label>
+      <input class="form-control form-control-md" placeholder="Full Name" name="adminFirstName" #adminFirstName="ngModel"
+        [(ngModel)]="adminData.firstName" required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>ADMIN LAST NAME</label>
+      <input class="form-control form-control-md" placeholder="Full Name" name="adminLastName" #adminLastName="ngModel"
+        [(ngModel)]="adminData.lastName" required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>ADMIN USER NAME</label>
+      <input class="form-control form-control-md" placeholder="Full Name" name="adminUserName" #adminUserName="ngModel"
+        [(ngModel)]="adminData.userName" required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>ADMIN PASSWORD</label>
+      <input class="form-control form-control-md" placeholder="Full Name" name="adminPassword" #adminPassword="ngModel"
+        [(ngModel)]="adminData.password" required>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-info btn-md btn-block" [disabled]="form.invalid">Update</button>
+      </div>
+      <div class=" col-md-2">
+        <button type="button" id="back" class="btn btn-info btn-md btn-block"><a href="admin/dashboard">Cancel</a></button>
+      </div>
+    </div>
+  </fieldset>
+  </form>
+</div>

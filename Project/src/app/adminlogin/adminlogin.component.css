@@ -1,6 +1,6 @@
 body {
 
-    background-image: url(https://www.android.com/static/2016/img/tv/new-showcase/New-Mobile_background_mobile.webp);
+    background-image: url('https://www.android.com/static/2016/img/tv/new-showcase/New-Mobile_background_mobile.webp');
 
     background-repeat: no-repeat;
 
@@ -26,13 +26,13 @@ body {
 
 
 
-.container {
+.login-container {
 
     width: 400px;
 
     max-width: 80%;
 
-    height: 550px;
+    height: 300px;
     /* Adjust the height as needed */
 
     margin: auto;
@@ -56,9 +56,6 @@ body {
 
 }
 
-
-
-
 h1 {
 
     margin-top: 0;
@@ -66,9 +63,6 @@ h1 {
     font-size: 24px;
 
 }
-
-
-
 
 form {
 
@@ -80,19 +74,13 @@ form {
 
 }
 
-
-
-
 label {
 
     display: block;
 
-    margin-bottom: 1px;
+    margin-bottom: 0;
 
 }
-
-
-
 
 input[type="text"],
 
@@ -100,7 +88,7 @@ input[type="password"],
 
 input[type="email"] {
 
-    width: 100%;
+    width: 80%;
 
     padding: 8px;
 
@@ -111,9 +99,6 @@ input[type="email"] {
     border-radius: 4px;
 
 }
-
-
-
 
 button {
 
@@ -135,23 +120,17 @@ button {
 
     color: #fff;
 
-    background-color: #150db2;
+    background-color: #1116ad;
 
     margin: 5px auto 0;
 
 }
 
-
-
-
 button:hover {
 
-    background-color: #0056b3;
+    background-color: #0488d4;
 
 }
-
-
-
 
 .error {
 

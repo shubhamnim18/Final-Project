@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class WebPageComponent {
   services:any[]=[];
-  constructor(private service:MainService,private route:Router){}
+  constructor(public service:MainService,private route:Router){}
   ngOnInit(){
 this.getAllServices();
+this.service.setToken();
+this.service.decodeToken();
   }
   getAllServices(){
     this.service.getService().subscribe((res:any)=>{
@@ -26,5 +28,7 @@ this.getAllServices();
       this.route.navigate(['/sub-category']);
     })
   }
-
+  logout(){
+    this.service.signout();
+  }
 }

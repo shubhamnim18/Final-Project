@@ -172,3 +172,4 @@ F:\Final-Project\ProjectWeb\ProjectWeb\obj\Debug\net6.0\refint\ProjectWeb.dll
 F:\Final-Project\ProjectWeb\ProjectWeb\obj\Debug\net6.0\ProjectWeb.pdb
 F:\Final-Project\ProjectWeb\ProjectWeb\obj\Debug\net6.0\ProjectWeb.genruntimeconfig.cache
 F:\Final-Project\ProjectWeb\ProjectWeb\obj\Debug\net6.0\ref\ProjectWeb.dll
+F:\Final-Project\ProjectWeb\ProjectWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

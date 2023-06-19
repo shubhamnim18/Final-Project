@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using ProjectWeb.Models;
 using ProjectWeb.Context;
 using Microsoft.EntityFrameworkCore;
@@ -94,7 +99,7 @@ namespace ProjectWeb.Controllers
 				user.Email = model.Email;
 				user.Password = model.Password;
 				_context.SaveChanges();
-				return Ok("User Data Updated");
+				return Ok(new{ Message = "User Data Updated"});
 			}
 			catch (Exception e)
 			{
@@ -146,7 +151,67 @@ namespace ProjectWeb.Controllers
 			if (user == null)
 				return NotFound(new { Message = "User Not Found!" });
 
-			return Ok(user);
+			string token = CreateJwt(user);
+			return Ok(new
+			{
+				Token = token,
+				Message = "Login Successful"
+			});
+		}
+
+		private string CreateJwt(User model)
+		{
+			var jwtTokenHandler = new JwtSecurityTokenHandler();
+			var key = Encoding.ASCII.GetBytes("veryverysecrete.....");
+			var identity = new ClaimsIdentity(new Claim[]
+			{
+				new Claim(ClaimTypes.PrimarySid,model.UserId.ToString()),
+				new Claim(ClaimTypes.Name,model.FirstName),
+				new Claim(ClaimTypes.Surname,model.LastName),
+				new Claim(ClaimTypes.SerialNumber,model.PhoneNumber),
+				new Claim(ClaimTypes.Email,model.Email)
+			});
+			var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+			var tokenDescriptor = new SecurityTokenDescriptor
+			{
+				Subject = identity,
+				Expires = DateTime.Now.AddDays(1),
+				SigningCredentials = credentials
+			};
+			var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+			return jwtTokenHandler.WriteToken(token);
+		}
+		[HttpGet("UserSubDet")]
+		public IActionResult UserSubDetails(int id)
+		{
+			try
+			{
+				var query = from ps in _context.ProductServices
+							join sps in _context.SubProductServices on ps.ServiceId equals sps.ServiceId
+							join st in _context.SubscriptionTiers on sps.SubServiceId equals st.SubServiceId
+							join us in _context.UserSubscriptions on st.SubscriptionTierId equals us.SubscriptionTierId
+							join u in _context.Users on us.UserId equals u.UserId
+							where u.UserId == id
+							select new
+							{
+								ps.ServiceName,
+								sps.SubServiceName,
+								st.TierName,
+								us.SubscriptionEndDate
+							};
+				if (query == null)
+				{
+					return NotFound(new { Message = "UserSubscriptions List is Empty" });
+				}
+				return Ok(query);
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+
 		}
 	}
 }

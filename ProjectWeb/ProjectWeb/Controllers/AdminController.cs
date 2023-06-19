@@ -1,7 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeb.Models;
 using ProjectWeb.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectWeb.Controllers
 {
@@ -32,6 +38,24 @@ namespace ProjectWeb.Controllers
 				return BadRequest(e);
 			}
 		}
+		[HttpGet("{id}")]
+		public IActionResult Get(int id)
+		{
+			try
+			{
+				var user = _context.Admins.Find(id);
+				if (user == null)
+				{
+					return NotFound("Data Not Found");
+				}
+				return Ok(user);
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e);
+			}
+		}
 		[HttpPost]
 		public IActionResult Post(Admin model)
 		{
@@ -39,7 +63,7 @@ namespace ProjectWeb.Controllers
 			{
 				_context.Admins.Add(model);
 				_context.SaveChanges();
-				return Ok("Data Added Successfully");
+				return Ok(new { Message = "Data Added Successfully" });
 			}
 			catch (Exception e)
 			{
@@ -73,7 +97,7 @@ namespace ProjectWeb.Controllers
 				admin.UserName = model.UserName;
 				admin.Password = model.Password;
 				_context.SaveChanges();
-				return Ok("Admin Data Updated");
+				return Ok(new { Message = "Admin Data Updated" });
 			}
 			catch (Exception e)
 			{
@@ -111,10 +135,51 @@ namespace ProjectWeb.Controllers
 			if (user == null)
 				return NotFound(new { Message = "User Not Found!" });
 
+			string token = CreateJwt(user);
 			return Ok(new
 			{
+				Token = token,
 				Message = "Login Successful"
 			});
 		}
+		private string CreateJwt(Admin model)
+		{
+			var jwtTokenHandler = new JwtSecurityTokenHandler();
+			var key = Encoding.ASCII.GetBytes("veryverysecrete.....");
+			var identity = new ClaimsIdentity(new Claim[]
+			{
+				new Claim(ClaimTypes.PrimarySid,model.AdminId.ToString()),
+				new Claim(ClaimTypes.Name,model.FirstName),
+				new Claim(ClaimTypes.Surname,model.LastName),
+				new Claim(ClaimTypes.NameIdentifier ,model.UserName)
+			});
+			var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+			var tokenDescriptor = new SecurityTokenDescriptor
+			{
+				Subject = identity,
+				Expires = DateTime.Now.AddDays(1),
+				SigningCredentials = credentials
+			};
+			var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+			return jwtTokenHandler.WriteToken(token);
+		}
+		[HttpGet("DeleteUserSubDet")]
+		public IActionResult DeleteDetails()
+		{
+			try
+			{
+				var data = _context.Admins.FromSqlRaw("exec DELETEUSERSUBSCRIPTION").ToList();
+				_context.SaveChanges();
+				return Ok(new { Message = "User Data deleted successfully" });
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+		}
+
 	}
+	
 }

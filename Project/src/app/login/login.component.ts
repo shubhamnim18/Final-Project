@@ -4,6 +4,7 @@ import { user } from '../shared/user';
 import { MainService } from '../shared/main.service';
 import { user1 } from '../shared/user1';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +12,7 @@ import { user1 } from '../shared/user1';
 })
 
 export class LoginComponent implements OnInit {
+  
   user:user=new user();
   errorMessage: string = '';
 
@@ -20,9 +22,9 @@ export class LoginComponent implements OnInit {
 
   log(){
     this.service.authenticate(this.user).subscribe({
-      next:(res)=>{
-        this.service.userData=res;
-        console.log(this.service.userData);
+      next:(res:any)=>{
+        this.service.storeToken(res.token);
+        this.service.token=res.token;
         this.router.navigate(['web-page']);
       },error:err=>{
         alert("Invalid Credentials");

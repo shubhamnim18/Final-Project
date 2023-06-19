@@ -5,12 +5,19 @@ import { subservice } from './subservice';
 import { subscriptionplan } from './subscriptionplan';
 import { user1 } from './user1';
 import { payment } from './payment';
+import { admin } from './admin';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { admin1 } from './admin1';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  userData:any;
+
+  helper=new JwtHelperService();
+  userData:user1=new user1();
+
+  adminData:admin1=new admin1();
 
   subServices:any[]=[];
 
@@ -22,6 +29,37 @@ export class MainService {
 
   updateTier:subscriptionplan=new subscriptionplan();
 
+  token:any;
+  setToken(){
+    this.token=this.getToken();
+  }
+  decodeToken(){
+    const decodeToken=this.helper.decodeToken(this.token);
+    this.userData.userId=decodeToken.primarysid;
+    this.userData.firstName=decodeToken.unique_name;
+    this.userData.lastName=decodeToken.family_name;
+    this.userData.phoneNumber=decodeToken.certserialnumber;
+    this.userData.email=decodeToken.email;
+
+    }
+
+  adtoken:any;
+  setAdminToken(){
+    this.adtoken=this.getAdminToken();
+  }
+  decodeAdminToken(){
+    const decodeToken=this.helper.decodeToken(this.adtoken);
+    this.adminData.adminId=decodeToken.primarysid;
+    this.adminData.firstName=decodeToken.unique_name;
+    this.adminData.lastName=decodeToken.family_name;
+    this.adminData.userName=decodeToken.nameid;
+
+    }
+
+
+ 
+
+  adminPath="https://localhost:7164/api/Admin"
   userPath="https://localhost:7164/api/Users";
   servicePath="https://localhost:7164/api/ProductServices";
   subServicePath="https://localhost:7164/api/SubProductServices";
@@ -29,7 +67,24 @@ export class MainService {
   subscriptionPath="https://localhost:7164/api/SubscriptionTiers";
   constructor(private http:HttpClient) { }
 
+  //admin
+  deleteUserSubscriptionDetails(){
+    return this.http.get(this.adminPath+'/DeleteUserSubDet')
+    }
+
+    getAdminrById(id:number){
+      return this.http.get(this.adminPath+'/'+id);
+    }
+
+    updateAdmin(adminData:admin1){
+      return this.http.put(this.adminPath,adminData);
+    }
+  
   //users
+
+  getUserById(id:number){
+    return this.http.get<user1>(this.userPath+'/'+id);
+  }
 
   getAllUsers(){
     return this.http.get(this.userPath);
@@ -39,9 +94,16 @@ export class MainService {
     return this.http.post(this.userPath,user);
   }
 
-
   deleteUser(id:number){
     return this.http.delete(this.userPath+'?id='+id);
+  }
+
+  getSubDetails(id:number){
+    return this.http.get(this.userPath+'/UserSubDet?id='+id)
+  }
+
+  updateUser(data:user1){
+    return this.http.put(this.userPath,data);
   }
 
   //service
@@ -116,6 +178,9 @@ export class MainService {
   authenticate(data:user){
     return this.http.post(this.userPath+'/authenticate',data);
   }
+  authenticateadmin(data:admin){
+    return this.http.post(this.adminPath+'/authenticate',data);
+  }
 
   //Tokens
   storeToken(tokenValue:string){
@@ -132,6 +197,21 @@ export class MainService {
   signout(){
     localStorage.clear();
   }
+  //admin token
+  storeAdminToken(tokenValue:string){
+    localStorage.setItem('admintoken',tokenValue);
+  }
+
+  getAdminToken(){
+    return localStorage.getItem('admintoken');
+  }
+
+  isAdminLoggedIn():boolean{
+    return !!localStorage.getItem('admintoken');
+  }
+  adminSignout(){
+    localStorage.clear();
+  }
 
   //Total
   getTotalUsers(){
@@ -145,6 +225,9 @@ export class MainService {
   }
   getTotalUserSubscriptions(){
     return this.http.get(this.userSubscriptionPath+'/Count');
+  }
+  getTotalSubscription(){
+    return this.http.get(this.userSubscriptionPath+'/Sub');
   }
   getTotalUserNotSubscribed(){
     return this.http.get(this.userSubscriptionPath+'/Notsub');

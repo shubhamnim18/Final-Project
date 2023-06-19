@@ -8,11 +8,11 @@ import { MainService } from 'src/app/shared/main.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private service:MainService ,private route:Router){}
+  constructor(public service:MainService ,private route:Router){}
 
   logout(){
-    this.service.signout();
-    this.route.navigate(['login']);
+    this.service.adminSignout();
+    this.route.navigate(['ad-login']);
   }
 
 }

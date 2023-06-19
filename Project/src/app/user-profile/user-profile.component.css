@@ -1,126 +1,131 @@
+
 body {
 
-    background: rgb(99, 39, 120);
-
-  }
-
-
- 
-
-  .form-control:focus {
-
-    box-shadow: none;
-
-    border-color: #ba68c8;
-
-  }
-
-
- 
-
-  .profile-button {
-
-    background: rgb(99, 39, 120);
-
-    box-shadow: none;
-
-    border: none;
-
-    padding: 10px 20px;
-
-    font-weight: bold;
-
-    color: white;
-
-  }
-
-
- 
-
-  .profile-button:hover {
-
-    background: #682773;
-
-    cursor: pointer;
-
-  }
-
-
- 
-
-  .profile-button:focus {
-
-    background: #682773;
-
-    box-shadow: none;
-
-    outline: none;
-
-  }
-
-
- 
-
-  .profile-button:active {
-
-    background: #682773;
-
-    box-shadow: none;
-
-  }
-
-
- 
-
-  .labels {
-
-    font-size: 11px;
-
-  }
-
-
- 
-
-  /* Updated CSS styles */
-
-  html,
-
-  body {
-
-    height: 100%;
+    background-color: #25274d;
+    background-position: center;
+    background-repeat: no-repeat;
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-  }
+    align-items: center;
+
+    height: 100vh;
 
 
- 
 
-  .container {
+}
 
-    width: 100%;
 
-    max-width: 500px;
+h3{
+  color: grey;
+  text-align: center;
+}
+.contact {
 
-    height: 100%;
+    padding: 4%;
+
+    height: 400px;
+
+}
+
+.col-md-3 {
+
+    background: #ff9b00;
+
+    padding: 4%;
+
+    border-top-left-radius: 0.5rem;
+
+    border-bottom-left-radius: 0.5rem;
+
+}
+
+.contact-info {
+
+    margin-top: 10%;
+
+}
+
+.contact-info img {
+
+    margin-bottom: 15%;
+
+}
+
+.contact-info h2 {
+
+    margin-bottom: 10%;
+
+}
+
+.col-md-9 {
 
     background: #fff;
 
-    padding: 20px;
+    padding: 3%;
 
-    border-radius: 10px;
+    border-top-right-radius: 0.5rem;
 
-  }
+    border-bottom-right-radius: 0.5rem;
 
+}
 
- 
+.contact-form label {
 
-  .container .row {
+    font-weight: 600;
+
+}
+
+.contact-form button {
+
+    background: #25274d;
+
+    color: #fff;
+
+    font-weight: 600;
+
+    width: 25%;
+
+}
+
+.contact-form button:focus {
+
+    box-shadow: none;
+
+}
+
+.table-container {
+
+    margin-top: 2%;
+
+}
+
+.table-container table {
 
     width: 100%;
 
-  }
+    background-color: #fff;
+
+    border-radius: 0.5rem;
+
+    padding: 1%;
+
+    color: #25274d;
+
+}
+
+.table-container th {
+
+    text-align: left;
+
+    padding: 1%;
+
+}
+
+.table-container td {
+
+    padding: 1%;
+
+}

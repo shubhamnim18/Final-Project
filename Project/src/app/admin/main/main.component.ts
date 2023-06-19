@@ -15,6 +15,7 @@ export class MainComponent implements OnInit{
   totalServices=0;
   totalSubServices=0;
   totalUserSubscription=0
+  totalSubscription=0;
   totalUserNotSubscribed=0;
   
 
@@ -24,7 +25,10 @@ export class MainComponent implements OnInit{
       this.getTotalServices();
       this.getTotalSubServices();
       this.getTotalUserSubscription();
+      this.getTotalSubscription()
       this.getTotalUserNotSubscribed();
+      this.service.setAdminToken();
+      this.service.decodeAdminToken();
   }
 
   getTotalUsers(){
@@ -48,6 +52,13 @@ export class MainComponent implements OnInit{
   getTotalUserSubscription(){
     this.service.getTotalUserSubscriptions().subscribe((res:any)=>{
       this.totalUserSubscription=res;
+    })
+  }
+
+  getTotalSubscription(){
+    this.service.getTotalSubscription().subscribe((res:any)=>{
+      console.log(res);
+      this.totalSubscription=res;
     })
   }
 

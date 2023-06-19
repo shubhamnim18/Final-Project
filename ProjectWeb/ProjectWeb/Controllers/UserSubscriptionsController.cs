@@ -128,7 +128,27 @@ namespace ProjectWeb.Controllers
 			try
 			{
 				var subscribes = _context.UserSubscriptions.ToList();
-				if (subscribes.Count == 0)
+				if (subscribes == null)
+				{
+					return NotFound("UserSubscriptions List is Empty");
+				}
+				return Ok(subscribes.Count());
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.Message);
+			}
+		}
+		[Route("Sub")]
+		[HttpGet]
+		public IActionResult Sub()
+		{
+			try
+			{
+				var subscribes =_context.UserSubscriptions.Select(u => u.UserId).Distinct();
+
+				if (subscribes == null)
 				{
 					return NotFound("UserSubscriptions List is Empty");
 				}
@@ -183,6 +203,7 @@ namespace ProjectWeb.Controllers
 								 st.TierName,
 								 us.SubscriptionTierId
 							 } into g
+							 orderby g.Count(x => x.us != null) descending
 							 select new
 							 {
 								 g.Key.ServiceName,

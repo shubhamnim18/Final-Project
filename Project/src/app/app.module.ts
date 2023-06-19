@@ -28,6 +28,7 @@ import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     PaymentComponent,
     SubCategoryComponent,
     UserProfileComponent,
+    AdminloginComponent,
   ],
   imports: [
     BrowserModule,

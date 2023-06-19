@@ -193,3 +193,6 @@ input[type="submit"]:hover {
     background-color: #45a049;
 
 }
+.btn-danger{
+    margin-left: 20px;
+}

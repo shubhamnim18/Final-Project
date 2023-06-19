@@ -12,7 +12,7 @@
                         <a class="nav-link active" style="color: white" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" style="color: white" aria-current="page" href="/login">Profile</a>
+                        <a class="nav-link active" style="color: white" aria-current="page" href="/user-profile">Profile</a>
                     </li>
                     <li class="nav-item" style="margin-left: 800px">
                         <a class="nav-link active" style="color: white" aria-current="page" href="#">Premium Video
@@ -26,13 +26,13 @@
     <span class="welcome">
         Buy Now Exclusive Offer<i class="fa fa-play-circle" aria-hidden="true" style="margin-left: 20px"></i></span>
     <div class="container">
-        <div *ngFor="let subTier of subTiers">
         <div class="sub-container">
             <div class="box1 featured" data-aos="fade-right">
-                <h3>{{subTier.tierName}}</h3>
-                <h4>{{subTier.price|currency}}&nbsp;<span>per month</span></h4>
+                <h3>{{subTiers[0].tierName}}</h3>
+                <h4>₹{{subTiers[0].price}}&nbsp;<span>per month</span></h4>
                 <br />
                 <ul>
+                    <li><i class="bx bx-check"></i> Duration:{{subTiers[0].duration}} Days</li>
                     <li><i class="bx bx-check"></i> Video Quality: Good</li>
                     <li><i class="bx bx-check"></i> Resolution: 480p</li>
                     <li><i class="bx bx-check"></i> Devices you can use to watch:</li>
@@ -43,17 +43,73 @@
                         <li>Computer</li>
                     </ul>
                 </ul>
-                <form>
-                    <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                        data-payment_button_id="pl_HRAIXySB68JwYQ" async></script>
-                </form>
-                <button (click)="sendData(subTier.subscriptionTierId)" class="subscribe-button">Subscribe</button>
+                <button (click)="sendData(subTiers[0].subscriptionTierId)" class="subscribe-button">Subscribe</button>
             </div>
         </div>
-    </div>
+        <div class="sub-container">
 
-    </div>
+            <div class="box3 featured" data-aos="fade-left">
+      
+              <h3>{{subTiers[1].tierName}}</h3>
+      
+              <h4>₹{{subTiers[1].price}}&nbsp;<span>per month</span></h4>
+      
+              <br />
+      
+              <ul>
+                <li><i class="bx bx-check"></i> Duration:{{subTiers[1].duration}} Days</li>
+                <li><i class="bx bx-check"></i> Video Quality: Better</li>
+      
+                <li><i class="bx bx-check"></i> Resolution: 1080p</li>
+      
+                <li><i class="bx bx-check"></i> Devices you can use to watch:</li>
+                <ul class="devices">
+                  <li>Mobile</li>
+                  <li>Tablet</li>
+                    <li>TV</li>
+                   <li>Computer</li>
+                </ul>
+              </ul>            
+              <button routerLink="/payment"class="subscribe-button">Subscribe</button>
+            </div>
+          </div>
+          <div class="sub-container">
 
+            <div class="box2 featured" data-aos="fade-up">
+      
+              <h3>{{subTiers[2].tierName}}</h3>
+      
+              <h4>₹{{subTiers[2].price}}&nbsp;<span>per month</span></h4>
+      
+              <br />
+      
+              <ul>
+                <li><i class="bx bx-check"></i> Duration:{{subTiers[2].duration}} Days</li>
+                <li><i class="bx bx-check"></i> Video Quality: Best</li>
+      
+                <li><i class="bx bx-check"></i> Resolution: 4K+HDR</li>
+      
+                <li><i class="bx bx-check"></i> Devices you can use to watch:</li>
+      
+                <ul class="devices">
+      
+                  <li>Mobile</li>
+      
+                  <li>Tablet</li>
+      
+                  <li>TV</li>
+      
+                  <li>Computer</li>
+      
+                </ul>
+      
+              </ul>      
+              <button routerLink="/payment" class="subscribe-button">Subscribe</button>
+      
+            </div>
+      
+          </div>
+    </div>
     <div id="about" class="about-section">
 
         <h2>About Us</h2>

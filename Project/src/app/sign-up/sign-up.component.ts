@@ -13,11 +13,13 @@ export class SignUpComponent {
   firstName: string = '';
   lastName: string = '';
 
-  phoneNumber: number = 0;
+  phoneNumber:number=0;
 
   email: string = '';
 
   password: string = '';
+
+  cnPassword:string='';
 
   errorMessage: string = '';
 
@@ -25,75 +27,86 @@ export class SignUpComponent {
 
   login() {
 
-    // if (
+    if (
 
-    //   this.firstName.trim() &&
+      this.firstName.trim() &&
 
-    //   this.lastName.trim() &&
+      this.lastName.trim() &&
 
-    //   this.phoneNumber.trim() &&
+      this.email.trim() &&
 
-    //   this.email.trim() &&
+      this.password.trim()
 
-    //   this.password.trim()
+    ) {
 
-    // ) {
-
-    //   // First Name validation
+      // First Name validation
 
 
-    //   if (!this.validateName(this.firstName)) {
+      if (!this.validateName(this.firstName)) {
 
-    //     this.errorMessage = 'Please enter a valid first name.';
+        this.errorMessage = 'Please enter a valid first name.';
+        alert(this.errorMessage);
 
-    //     return;
+        return;
 
-    //   }
-
-
-    //   // Last Name validation
-
-    //   if (!this.validateName(this.lastName)) {
-
-    //     this.errorMessage = 'Please enter a valid last name.';
+      }
 
 
-    //     return;
+      // Last Name validation
 
-    //   }
+      if (!this.validateName(this.lastName)) {
 
-    //   // Phone Number validation
+        this.errorMessage = 'Please enter a valid last name.';
+       
+        alert(this.errorMessage);
 
+        return;
 
-    //   if (!this.validatePhoneNumber(this.phoneNumber)) {
+      }
 
-    //     this.errorMessage = 'Please enter a valid phone number (10 digits).';
-
-
-    //     return;
-
-    //   }
-
-    //   // Email validation
+      // Phone Number validation
 
 
-    //   if (!this.validateEmail(this.email)) {
+      if (!this.validatePhoneNumber(this.phoneNumber)) {
 
-    //     this.errorMessage = 'Please enter a valid email address.';
+        this.errorMessage = 'Please enter a valid phone number (10 digits).';
+    
+        alert(this.errorMessage);
 
-    //     return;
+        return;
 
-    //   }
-    //   // Password validation
+      }
+
+      // Email validation
 
 
-    //   if (this.password.length < 10) {
+      if (!this.validateEmail(this.email)) {
 
-    //     this.errorMessage = 'Password should be at least 8 characters long.';
+        this.errorMessage = 'Please enter a valid email address.';
+       
+        alert(this.errorMessage);
+        return;
 
-    //     return;
+      }
+      // Password validation
 
-    //   }
+
+      if (this.password.length < 10) {
+
+        this.errorMessage = 'Password should be at least 8 characters long.';
+      
+        alert(this.errorMessage);
+        return;
+
+      }
+
+      if(this.password!=this.cnPassword){
+        this.errorMessage = 'Password is not matching';
+      
+        alert(this.errorMessage);
+        return;
+
+      }
 
       // Perform authentication or further processing here
 
@@ -104,42 +117,43 @@ export class SignUpComponent {
       this.user.password=this.password;
       this.service.addUser(this.user).subscribe(res=>{
         alert("Data added successfully");
+        this.router.navigate(['/login']);
       })
 
 
-      this.router.navigate(['/login']);
+      
+    
+
+    } else {
+
+      this.errorMessage = 'Please fill in all the fields.';
+
     }
-
-    // } else {
-
-    //   this.errorMessage = 'Please fill in all the fields.';
-
-    // }
-
+  }
   
 
 
-  // validateName(name: string): boolean {
+  validateName(name: string): boolean {
 
-  //   const nameRegex = /^[a-zA-Z\s]+$/;
+    const nameRegex = /^[a-zA-Z\s]+$/;
 
-  //   return nameRegex.test(name);
+    return nameRegex.test(name);
 
-  // }
+  }
 
 
-  // validatePhoneNumber(phoneNumber: string): boolean {
+  validatePhoneNumber(phoneNumber: number): boolean {
 
-  //   const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^[0-9]{10}$/;
 
-  //   return phoneRegex.test(phoneNumber);
+    return phoneRegex.test(phoneNumber.toString());
 
-  // }
+  }
 
-  // validateEmail(email: string): boolean {
+  validateEmail(email: string): boolean {
 
-  //   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //   return emailRegex.test(email);
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
 
-  // }
+  }
 }

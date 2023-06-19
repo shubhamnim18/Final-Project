@@ -21,6 +21,8 @@ import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminauthGuard } from './guards/adminauth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,13 +30,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'web-page', component: WebPageComponent },
-  { path: 'buy-plan', component: BuyPlanComponent },
-  { path: 'payment', component: PaymentComponent },
-  { path: 'sub-category', component: SubCategoryComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'web-page', component: WebPageComponent,canActivate:[AuthGuard] },
+  { path: 'buy-plan', component: BuyPlanComponent,canActivate:[AuthGuard] },
+  { path: 'payment', component: PaymentComponent,canActivate:[AuthGuard] },
+  { path: 'sub-category', component: SubCategoryComponent,canActivate:[AuthGuard] },
+  { path: 'user-profile', component: UserProfileComponent,canActivate:[AuthGuard] },
+  {path:'ad-login',component:AdminloginComponent},
   {
-    path: 'admin', component: AdminComponent,
+    path: 'admin', component: AdminComponent,canActivate:[AdminauthGuard],
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'user', component: UsersComponent },
