@@ -198,18 +198,11 @@ namespace ProjectWeb.Controllers
 							 from us in subscriptions.DefaultIfEmpty()
 							 group new { ps, sps, st, us } by new
 							 {
-								 ps.ServiceName,
-								 sps.SubServiceName,
-								 st.TierName,
-								 us.SubscriptionTierId
+								 ps.ServiceName
 							 } into g
-							 orderby g.Count(x => x.us != null) descending
 							 select new
 							 {
 								 g.Key.ServiceName,
-								 g.Key.SubServiceName,
-								 g.Key.TierName,
-								 g.Key.SubscriptionTierId,
 								 TotalSubscription = g.Count(x => x.us != null)
 							 };
 

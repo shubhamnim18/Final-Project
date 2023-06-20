@@ -1,11 +1,22 @@
-<h2>Total Number of Subscription</h2>
-<table class="table table-primary  table-striped-columns">
+  <h2>Total Number of Subscription</h2>
+  <br>
+  <div class="row">
+    <div class="bar">
+      <h4>Bar Chart</h4>
+      <canvas id="barchart"></canvas>
+    </div>
+    <br>
+    <div class="pie">
+      <h4>Pie Chart</h4>
+      <canvas id="piechart"></canvas>
+    </div>
+  </div>
+
+<table class="table table table-md table-primary  table-striped-columns">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Service Name</th>
-        <th scope="col">Sub-Service Name</th>
-        <th scope="col">Tier Name</th>
         <th scope="col">Total Subscription</th>
       </tr>
     </thead>
@@ -13,10 +24,7 @@
       <tr *ngFor="let r of report,let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{r.serviceName}}</td>
-        <td><div *ngIf="r.subServiceName!=null;else nodata">{{r.subServiceName}}</div></td>
-        <td><div *ngIf="r.tierName!=null;else nodata">{{r.tierName}}</div></td>
         <td>{{r.totalSubscription}}</td>
       </tr>
     </tbody>
-    <ng-template #nodata><p>---</p></ng-template>
   </table>

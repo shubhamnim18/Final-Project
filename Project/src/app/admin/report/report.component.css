@@ -8,10 +8,22 @@ th,td{
     margin-left: 130px;
     margin-top: 50px;
 }
-h2{
-    text-align: center;
-    margin-left: 150px;
-}
 p{
     text-align: center;
+}
+h2{
+    text-align: center;
+    margin-left: 250px;
+}
+.row{
+    margin-left: 70px;
+}
+.bar{
+    height: 450px;
+    width: 450px;
+}
+.pie{
+    height: 300px;
+    width: 300px;
+    margin-left: 80px;
 }
