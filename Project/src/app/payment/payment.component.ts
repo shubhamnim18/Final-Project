@@ -8,7 +8,7 @@ import { MainService } from '../shared/main.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
-  constructor(private router: Router,private service:MainService) {}
+  constructor(private router: Router,public service:MainService) {}
   ngOnInit(): void {
     const payButton = document.getElementById("payButton");
     if (payButton) {

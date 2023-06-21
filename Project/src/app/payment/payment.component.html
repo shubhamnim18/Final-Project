@@ -1,44 +1,151 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" style="color: white" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" style="color: white" aria-current="page" href="/login">Profile</a>
-                    </li>
-                    <li class="nav-item" style="margin-left: 800px">
-                        <a class="nav-link active" style="color: white" aria-current="page" href="#">Premium Video
-                            <i class="fa fa-bolt" aria-hidden="true" style="font-size: 24px"></i>
-                        </a>
-                    </li>
-                </ul>
-           </div>
+<div class="col-md-6 offset-md-3">
+
+    <span class="anchor" id="formPayment"></span>
+
+    <hr class="my-5">
+
+
+
+
+ 
+
+    <div class="card card-outline-secondary">
+
+        <div class="card-body">
+
+            <h3 class="text-center">Payment Details</h3>
+
+            <hr>
+
+           
+
+            <form class="form" role="form" autocomplete="off">
+
+                <div class="form-group">
+
+                    <label for="cc_name">Card Holder's Name</label>
+
+                    <input type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Card Number</label>
+
+                    <input type="text" class="form-control" autocomplete="off" maxlength="20" pattern="\d{16}" title="Credit card number" required="">
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="col-md-12">Card Exp. Date</label>
+
+                    <div class="col-md-4">
+
+                        <select class="form-control" name="cc_exp_mo" size="0">
+
+                            <option value="01">01</option>
+
+                            <option value="02">02</option>
+
+                            <option value="03">03</option>
+
+                            <option value="04">04</option>
+
+                            <option value="05">05</option>
+
+                            <option value="06">06</option>
+
+                            <option value="07">07</option>
+
+                            <option value="08">08</option>
+
+                            <option value="09">09</option>
+
+                            <option value="10">10</option>
+
+                            <option value="11">11</option>
+
+                            <option value="12">12</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <select class="form-control" name="cc_exp_yr" size="0">
+
+                            <option>2018</option>
+
+                            <option>2019</option>
+
+                            <option>2020</option>
+
+                            <option>2021</option>
+
+                            <option>2022</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" placeholder="CVC">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <label class="col-md-12">Amount</label>
+
+                </div>
+
+                <div class="form-inline">
+
+                    <div class="input-group">
+
+                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+
+                        <input type="text" class="form-control text-right" id="exampleInputAmount" placeholder="{{service.tierDet.price}}">
+
+                        <div class="input-group-append"><span class="input-group-text">.00</span></div>
+
+                    </div>
+
+                </div>
+
+                <br><br>
+
+                <hr>
+
+                <div class="form-group row">
+
+                    <div class="col-md-6">
+
+                        <input class="btn btn-success" type="button" id="payButton" value="pay" (click)="OnSubmit()"/>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <input class="btn btn-danger" type="button" value="cancel" routerLink="/web-page"/>
+
+                     
+
+                   
+
+                </div>
+
+           
+
         </div>
-    </nav>
-</head>
-<body>
-    <h2>Enter your information:</h2>
-    <form>
-        <label for="email">Email:</label><br />
-        <input type="email" id="email" name="email" required /><br /><br />
-        <label for="phone">Phone Number:</label><br />
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required /><br /><br />
-        <label for="card">Card ID:</label><br />
-        <input type="text" id="card" name="card" required /><br /><br />
-        <label for="expiry">Expiry Date:</label><br />
-        <input type="month" id="expiry" name="expiry" required /><br /><br />
-       <input class="btn btn-success" type="button" id="payButton" value="Pay" (click)="OnSubmit()"/>
-       <input class="btn btn-danger" type="button" id="payButton" value="Cancel" routerLink="/web-page"/>
-    </form>
-</body>
-</html>
+
+   
+
+ 
+
