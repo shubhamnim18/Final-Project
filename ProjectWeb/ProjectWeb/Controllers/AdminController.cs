@@ -28,7 +28,7 @@ namespace ProjectWeb.Controllers
 				var admin = _context.Admins.ToList();
 				if (admin == null)
 				{
-					return NotFound("Data Not Found");
+					return NotFound(new { Message = "Data Not Found" });
 				}
 				return Ok(admin);
 			}
@@ -90,7 +90,7 @@ namespace ProjectWeb.Controllers
 				var admin = _context.Admins.Find(model.AdminId);
 				if (admin == null)
 				{
-					return NotFound("Data Not Found");
+					return NotFound(new { Message = "Data Not Found" });
 				}
 				admin.FirstName = model.FirstName;
 				admin.LastName = model.LastName;
@@ -117,7 +117,7 @@ namespace ProjectWeb.Controllers
 				}
 				_context.Admins.Remove(admin);
 				_context.SaveChanges();
-				return Ok("Admin Data deleted successfully");
+				return Ok(new { Message = "Admin Data deleted successfully" });
 			}
 			catch (Exception e)
 			{

@@ -8,7 +8,7 @@ import { MainService } from '../shared/main.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
-  constructor(private router: Router,public service:MainService) {}
+  constructor(public router: Router,public service:MainService) {}
   ngOnInit(): void {
     const payButton = document.getElementById("payButton");
     if (payButton) {
@@ -21,6 +21,11 @@ export class PaymentComponent {
     this.service.payment().subscribe(res=>{
       this.router.navigate(['/web-page']);
     })
+  }
+  logout(){
+
+    this.service.signout();
+
   }
 }
 

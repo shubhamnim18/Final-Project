@@ -15,6 +15,7 @@ public partial class UserSubscription
 
     public DateTime? SubscriptionEndDate { get; set; }
 
+
     public virtual SubscriptionTier? SubscriptionTier { get; set; }
 
     public virtual User? User { get; set; }

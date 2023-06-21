@@ -105,7 +105,7 @@ namespace ProjectWeb.Controllers
 				service.ServiceName = model.ServiceName;
 				service.Image = model.Image;
 				_context.SaveChanges();
-				return Ok("Service Data Updated");
+				return Ok(new { Message = "Service Data Updated" });
 			}
 			catch (Exception e)
 			{

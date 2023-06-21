@@ -1,7 +1,7 @@
 <div *ngIf="users.length!=0;else noserv">
 <h2>User Details</h2>
-<table class="table table-primary  table-striped-columns">
-    <thead>
+<table class="table table-hover">
+    <thead class="table-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">User Id</th>
@@ -12,7 +12,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-light">
       <tr *ngFor="let u of users,let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{u.userId}}</td>
@@ -20,7 +20,7 @@
         <td>{{u.lastName}}</td>
         <td>{{u.phoneNumber}}</td>
         <td>{{u.email}}</td>
-        <td><button class="btn btn-dark"  (click)="deleteUser(u.userId)">Delete</button></td>
+        <td><button class="btn btn-danger"  (click)="deleteUser(u.userId)">Delete</button></td>
       </tr>
     </tbody>
     <ng-template #nodata><p>---</p></ng-template>

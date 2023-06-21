@@ -1,8 +1,8 @@
 <div *ngIf="subservices.length!=0;else noserv">
 <h2>Sub-Service Details</h2>
 <button class="btn btn-success" routerLink="/admin/add-sub-ser">Add Sub Service</button>
-<table class="table table-primary  table-striped-columns">
-    <thead>
+<table class="table table-hover">
+    <thead class="table-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Sub Service Id</th>
@@ -12,7 +12,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-light">
       <tr *ngFor="let s of subservices,let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{s.subServiceId}}</td>

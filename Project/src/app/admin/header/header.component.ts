@@ -9,7 +9,9 @@ import { MainService } from 'src/app/shared/main.service';
 })
 export class HeaderComponent {
   constructor(public service:MainService ,private route:Router){}
-
+  ngOnInit(){
+    
+  }
   logout(){
     this.service.adminSignout();
     this.route.navigate(['ad-login']);

@@ -1,151 +1,310 @@
-<div class="col-md-6 offset-md-3">
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+<div class="payment">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li
+            class="nav-item"
+            style="
+              font-size: 18px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-weight: bold;
+            "
+          >
+            <a
+              class="nav-link active"
+              style="color: white"
+              aria-current="page"
+              href="/web-page"
+              >Home</a
+            >
+          </li>
+
+          <li
+            class="nav-item"
+            style="
+              font-size: 18px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-weight: bold;
+            "
+          >
+            <a
+              class="nav-link active"
+              style="color: white"
+              aria-current="page"
+              href="/user-profile"
+              >Profile</a
+            >
+          </li>
+
+          <li
+            class="nav-item"
+            style="
+              font-size: 18px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-weight: bold;
+            "
+          >
+            <a
+              class="nav-link active"
+              style="color: white"
+              aria-current="page"
+              href="/login"
+              (click)="logout()"
+              >Logout</a
+            >
+          </li>
+        </ul>
+        <ul class="navbar-nav" style="margin-left: 180px">
+          <li
+            class="nav-item"
+            style="
+              font-size: 18px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-weight: bold;
+            "
+          >
+            <a class="nav-link active" style="color: white" aria-current="page">
+              <i
+                class="fa fa-bolt"
+                aria-hidden="true"
+                style="font-size: 25px"
+              ></i>
+              Premium Video
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container col-md-6 offset-md-3">
     <span class="anchor" id="formPayment"></span>
 
-    <hr class="my-5">
-
-
-
-
- 
+    <hr class="my-5" />
 
     <div class="card card-outline-secondary">
+      <div class="card-body">
+        <h3 class="text-center">Payment Details</h3>
 
-        <div class="card-body">
+        <hr />
 
-            <h3 class="text-center">Payment Details</h3>
+        <form class="form" role="form" autocomplete="off">
+          <div class="form-group">
+            <label for="cc_name">Card Holder's Name</label>
 
-            <hr>
+            <input
+              type="text"
+              class="form-control"
+              id="cc_name"
+              pattern="\w+ \w+.*"
+              title="First and last name"
+              required="required"
+            />
+          </div>
 
-           
+          <div class="form-group">
+            <label>Card Number</label>
 
-            <form class="form" role="form" autocomplete="off">
+            <input
+              type="text"
+              class="form-control"
+              autocomplete="off"
+              maxlength="20"
+              pattern="\d{16}"
+              title="Credit card number"
+              required=""
+            />
+          </div>
 
-                <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-12">Card Exp. Date</label>
 
-                    <label for="cc_name">Card Holder's Name</label>
+            <div class="col-md-4">
+              <select class="form-control" name="cc_exp_mo" size="0">
+                <option value="01">01</option>
 
-                    <input type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required">
+                <option value="02">02</option>
+
+                <option value="03">03</option>
+
+                <option value="04">04</option>
+
+                <option value="05">05</option>
+
+                <option value="06">06</option>
+
+                <option value="07">07</option>
+
+                <option value="08">08</option>
+
+                <option value="09">09</option>
+
+                <option value="10">10</option>
+
+                <option value="11">11</option>
+
+                <option value="12">12</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <select class="form-control" name="cc_exp_yr" size="0">
+                <option>2018</option>
 
-                </div>
-
-                <div class="form-group">
-
-                    <label>Card Number</label>
-
-                    <input type="text" class="form-control" autocomplete="off" maxlength="20" pattern="\d{16}" title="Credit card number" required="">
-
-                </div>
-
-                <div class="form-group row">
-
-                    <label class="col-md-12">Card Exp. Date</label>
-
-                    <div class="col-md-4">
-
-                        <select class="form-control" name="cc_exp_mo" size="0">
-
-                            <option value="01">01</option>
-
-                            <option value="02">02</option>
-
-                            <option value="03">03</option>
-
-                            <option value="04">04</option>
-
-                            <option value="05">05</option>
-
-                            <option value="06">06</option>
-
-                            <option value="07">07</option>
-
-                            <option value="08">08</option>
-
-                            <option value="09">09</option>
-
-                            <option value="10">10</option>
-
-                            <option value="11">11</option>
-
-                            <option value="12">12</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <select class="form-control" name="cc_exp_yr" size="0">
-
-                            <option>2018</option>
-
-                            <option>2019</option>
-
-                            <option>2020</option>
-
-                            <option>2021</option>
-
-                            <option>2022</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" placeholder="CVC">
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <label class="col-md-12">Amount</label>
-
-                </div>
-
-                <div class="form-inline">
-
-                    <div class="input-group">
-
-                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-
-                        <input type="text" class="form-control text-right" id="exampleInputAmount" placeholder="{{service.tierDet.price}}">
-
-                        <div class="input-group-append"><span class="input-group-text">.00</span></div>
-
-                    </div>
-
-                </div>
-
-                <br><br>
-
-                <hr>
-
-                <div class="form-group row">
-
-                    <div class="col-md-6">
-
-                        <input class="btn btn-success" type="button" id="payButton" value="pay" (click)="OnSubmit()"/>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <input class="btn btn-danger" type="button" value="cancel" routerLink="/web-page"/>
-
-                     
-
-                   
-
-                </div>
-
-           
-
+                <option>2019</option>
+
+                <option>2020</option>
+
+                <option>2021</option>
+
+                <option>2022</option>
+
+                <option>2023</option>
+
+                <option>2024</option>
+
+                <option>2025</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                maxlength="3"
+                pattern="\d{3}"
+                title="Three digits at back of your card"
+                required=""
+                placeholder="CVC"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-md-12">Amount</label>
+          </div>
+
+          <div class="form-inline">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">₹</span>
+              </div>
+
+              <input
+                type="text"
+                class="form-control text-right"
+                id="exampleInputAmount"
+                placeholder="Enter amount"
+                value="{{ service.tierDet.price }}"
+              />
+
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+          </div>
+
+          <br /><br />
+
+          <hr />
+
+          <div class="form-group row">
+            <div class="col-md-6">
+              <input
+                class="btn btn-success btn-lg"
+                type="button"
+                id="payButton"
+                value="PAY"
+                (click)="OnSubmit()"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <input
+                class="btn btn-danger btn-lg"
+                type="button"
+                value="CANCEL"
+                routerLink="/web-page"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <footer>
+      <h4>Help & Support</h4>
+
+      <ul class="no-bullets">
+        <li>FAQ</li>
+
+        <li>Contact Us</li>
+
+        <li>Terms of Service</li>
+
+        <li>Privacy Policy</li>
+      </ul>
+
+      <h4>Connect with Us</h4>
+
+      <ul class="no-bullets">
+        <li>
+          <i
+            class="fa fa-facebook-official"
+            style="margin-left: 7px"
+            aria-hidden="true"
+          ></i>
+          Facebook
+        </li>
+
+        <li>
+          <i
+            class="fa fa-twitter-square"
+            style="margin-left: 7px"
+            aria-hidden="true"
+          ></i
+          >Twitter
+        </li>
+
+        <li>
+          <i
+            class="fa fa-instagram"
+            style="margin-left: 7px"
+            aria-hidden="true"
+          ></i
+          >Instagram
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-md">
+          <p class="text-center">
+            &copy; 2023 Your OTT Platform. All rights reserved.
+          </p>
         </div>
-
-   
-
- 
-
+      </div>
+    </footer>
+  </div>
+</div>

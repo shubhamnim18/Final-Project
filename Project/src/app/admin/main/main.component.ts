@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faServicestack } from '@fortawesome/free-brands-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faPoll, faUser } from '@fortawesome/free-solid-svg-icons';
 import { MainService } from 'src/app/shared/main.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { MainService } from 'src/app/shared/main.service';
 export class MainComponent implements OnInit{
   faUser=faUser;
   faService=faServicestack;
+  faicon=faPoll;
   totalUsers=0;
   totalServices=0;
   totalSubServices=0;
