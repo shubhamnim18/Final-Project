@@ -13,8 +13,6 @@ export class ReportComponent implements OnInit{
   subDet:any[]=[];
   constructor(private service:MainService){}
   ngOnInit(): void {
-    this.service.setAdminToken();
-      this.service.decodeAdminToken();
     this.service.getReport().subscribe((res:any)=>{
       this.report=res;
       if(this.report!=null){

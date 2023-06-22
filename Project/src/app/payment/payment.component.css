@@ -1,196 +1,202 @@
 .navbar {
-  background-image: linear-gradient(
-    to bottom,
-    #305bcb,
-    #0072d3,
-    #0086d5,
-    #0098d2,
-    #3ea8cd
-  );
-
-  height: 50px;
+    background-image: linear-gradient(to bottom, #305bcb, #0072d3, #0086d5, #0098d2, #3ea8cd);
+    height: 50px;
 }
-
 * {
-  margin: 0;
 
-  padding: 0;
+    margin: 0;
 
-  box-sizing: border-box;
+    padding: 0;
 
-  font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
 
-  padding-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 
-  padding-right: 10px;
-
-  padding-top: 2px;
-
-  padding-bottom: 2px;
 }
 
-.container {
-  margin-left: 400px;
-}
 
-.payment {
-  background-image: linear-gradient(
-    to right top,
-    #121315,
-    #161719,
-    #1a1b1e,
-    #1e1f22,
-    #222327
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
+.container{
+    margin-left: 350px;
 }
 
 body {
-  background-image: linear-gradient(
-    to right top,
-    #121315,
-    #161719,
-    #1a1b1e,
-    #1e1f22,
-    #222327
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 100vh;
+
+    background-color: #0C4160;
+
+
+
+
+    padding: 30px 10px;
+
 }
+
+
+
+
+
+
 
 .container .h8 {
-  font-size: 30px;
 
-  font-weight: 800;
+    font-size: 30px;
 
-  text-align: center;
+    font-weight: 800;
+
+    text-align: center;
+
 }
+
+
+
 
 .btn.btn-primary {
-  width: 100%;
 
-  height: 70px;
+    width: 100%;
 
-  display: flex;
+    height: 70px;
 
-  align-items: center;
+    display: flex;
 
-  justify-content: space-between;
+    align-items: center;
 
-  padding: 0 15px;
+    justify-content: space-between;
 
-  background-image: linear-gradient(
-    to right,
-    #77a1d3 0%,
-    #79cbca 51%,
-    #77a1d3 100%
-  );
+    padding: 0 15px;
 
-  border: none;
+    background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
 
-  transition: 0.5s;
+    border: none;
 
-  background-size: 200% auto;
+    transition: 0.5s;
+
+    background-size: 200% auto;
+
+
+
+
 }
+
+
+
+
 
 .btn.btn.btn-primary:hover {
-  background-position: right center;
 
-  color: #fff;
+    background-position: right center;
 
-  text-decoration: none;
+    color: #fff;
+
+    text-decoration: none;
+
 }
+
+
+
+
+
 
 .btn.btn-primary:hover .fas.fa-arrow-right {
-  transform: translate(15px);
 
-  transition: transform 0.2s ease-in;
+    transform: translate(15px);
+
+    transition: transform 0.2s ease-in;
+
 }
+
+
+
 
 .form-control {
-  color: white;
 
-  background-color: #223c60;
+    color: white;
 
-  border: 2px solid transparent;
+    background-color: #223C60;
 
-  height: 60px;
+    border: 2px solid transparent;
 
-  padding-left: 20px;
+    height: 60px;
 
-  vertical-align: middle;
+    padding-left: 20px;
+
+    vertical-align: middle;
+
 }
 
-.btn {
-  padding-top: 5px;
-
-  padding-bottom: 5px;
-
-  padding-left: 10px;
-
-  padding-right: 10px;
+.btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+
+
 
 .form-control:focus {
-  color: white;
 
-  background-color: #0c4160;
+    color: white;
 
-  border: 2px solid #2d4dda;
+    background-color: #0C4160;
 
-  box-shadow: none;
+    border: 2px solid #2d4dda;
+
+    box-shadow: none;
+
 }
+
+
+
 
 .text {
-  font-size: 14px;
 
-  font-weight: 600;
+    font-size: 14px;
+
+    font-weight: 600;
+
 }
+
+
+
 
 ::placeholder {
-  font-size: 14px;
 
-  font-weight: 600;
+    font-size: 14px;
+
+    font-weight: 600;
+
 }
-
 footer {
-  background-image: linear-gradient(
-    to bottom,
-    #305bcb,
-    #0072d3,
-    #0086d5,
-    #0098d2,
-    #3ea8cd
-  );
-
-  margin-left: -10px;
-
-  margin-top: 180px;
-
-  color: #fff;
-
-  padding: 30px;
-
-  text-align: left;
-
-  padding-top: 60px;
+    background-image: linear-gradient(to bottom, #305bcb, #0072d3, #0086d5, #0098d2, #3ea8cd);
+    margin-left: -10px;
+    margin-top: 180px;
+    color: #fff;
+    padding: 30px;
+    text-align: left;
+    padding-top: 60px;
 }
 
 .footer-links a {
-  color: #fff;
-
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
-
 .footer-text {
-  font-size: 14px;
-
-  margin-top: 40px;
-
-  float: right;
+    font-size: 14px;
+    margin-top: 40px;
+    float: right;
 }
-
 ul.no-bullets {
-  list-style-type: none;
+    list-style-type: none;
 }

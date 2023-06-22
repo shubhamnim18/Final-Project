@@ -12,9 +12,6 @@ export class ServicesComponent {
 
   }
   ngOnInit(){
-    this.service.setAdminToken();
-      this.service.decodeAdminToken();
-  
     this.getAllServices();
   }
   getAllServices(){

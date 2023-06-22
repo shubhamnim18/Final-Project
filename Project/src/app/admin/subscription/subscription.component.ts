@@ -11,9 +11,6 @@ export class SubscriptionComponent {
   constructor(private service:MainService,private route:Router){}
   subscriptionTier:any[]=[];
   ngOnInit(){
-    this.service.setAdminToken();
-      this.service.decodeAdminToken();
-  
     this.getAllSubscriptionTier();
   }
   

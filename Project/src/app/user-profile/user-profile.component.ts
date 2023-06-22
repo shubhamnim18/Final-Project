@@ -39,8 +39,7 @@ export class UserProfileComponent {
     })
   }
   logout(){
-
     this.service.signout();
-
   }
+
 }

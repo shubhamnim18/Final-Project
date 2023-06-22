@@ -1,7 +1,7 @@
 <h2>Subscription Tier Details</h2>
 <button class="btn btn-success" routerLink="/admin/add-subscription">Add Subscrption Tier</button>
-<table class="table table-hover">
-    <thead class="table-dark">
+<table class="table table-primary  table-striped-columns">
+    <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Subscription Tier Id</th>
@@ -13,7 +13,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody table="table-light">
+    <tbody>
       <tr *ngFor="let s of subscriptionTier,let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{s.st.subscriptionTierId}}</td>

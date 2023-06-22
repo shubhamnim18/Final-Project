@@ -11,9 +11,6 @@ export class UsersComponent {
   users:any[]=[];
   constructor(private service:MainService){}
   ngOnInit(){
-    this.service.setAdminToken();
-      this.service.decodeAdminToken();
-  
     this.getAllUsers();
   }
   getAllUsers(){

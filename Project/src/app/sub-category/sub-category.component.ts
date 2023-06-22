@@ -21,7 +21,4 @@ export class SubCategoryComponent {
       this.route.navigate(['/buy-plan']);
     })
   }
-  logout(){
-    this.service.signout();
-  }
 }

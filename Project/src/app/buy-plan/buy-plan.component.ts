@@ -24,9 +24,4 @@ export class BuyPlanComponent {
       this.route.navigate(['/payment']);
     });
   }
-  logout(){
-
-    this.service.signout();
-
-  }
 }
